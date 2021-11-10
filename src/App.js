@@ -6,6 +6,7 @@ import AuthProvider from './components/Context/AuthProvider';
 import Login from './components/Login/Login';
 import Footer from './components/Footer/Footer';
 import ExploreCars from './components/ExploreCars/ExploreCars';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
             <Route exact path='/explorecars'>
               <Header />
               <ExploreCars/>
+              <Footer/>
+            </Route>
+            <Route exact path='/dashboard'>
+              <Header />
+              <Dashboard/>
               <Footer/>
             </Route>
           </Switch>

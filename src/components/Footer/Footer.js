@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Container, Row, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 import logo from '../../img/logo.png'
 import './Footer.css';
 const Footer = () => {
@@ -36,10 +37,10 @@ const Footer = () => {
                         <div>
                             <h4> Links </h4>
                             <ul className='list-unstyled'>
-                                <Link className='link lh-lg' to='/home'> <li> Home </li> </Link>
-                                <Link className='link lh-lg' to='/about'> <li> About </li> </Link>
-                                <Link className='link lh-lg' to='/services'> <li> Services </li> </Link>
-                                <Link className='link lh-lg' to='/contact'> <li> Contact </li> </Link>
+                                <NavHashLink className='link lh-lg' to='/home#hero'> <li> Home </li> </NavHashLink>
+                                <NavHashLink className='link lh-lg' to='/home#cars'> <li> Cars </li> </NavHashLink>
+                                <NavHashLink className='link lh-lg' to='/home#review'> <li> Review</li> </NavHashLink>
+                                <NavHashLink className='link lh-lg' to='/home#chooseus'> <li> Why Us </li> </NavHashLink>
                             </ul>
                         </div>
                     </Col>

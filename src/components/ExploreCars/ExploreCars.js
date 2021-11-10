@@ -8,7 +8,7 @@ const ExploreCars = () => {
     const [isLoading, setIsLoading] = useState(true)
     useEffect(()=>{
         setIsLoading(true)
-        fetch('http://localhost:5000/explorecars')
+        fetch('https://young-inlet-90443.herokuapp.com/explorecars')
         .then(res=> res.json())
         .then(data=> {
             setCars(data);

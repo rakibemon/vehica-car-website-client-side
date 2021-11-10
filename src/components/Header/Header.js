@@ -38,7 +38,10 @@ const Header = () => {
                             {/* When User logged in "Logout button" when not Login & SignUp button */}
                             {user.displayName || user.email ?
 
-                                <button className='button' onClick={logOut}> Log out</button>
+                                <div className='d-flex'>
+                                    <NavLink activeStyle={activeStyle} className="nav-link mt-1" to='/dashboard'> Dashboard</NavLink>
+                                    <button className='button' onClick={logOut}> Log out</button>
+                                </div>
                                 :
                                 <NavLink className="link" to='/login'> <button className='button'>Log in</button></NavLink>
                             }
@@ -51,9 +54,9 @@ const Header = () => {
                             {
                                 (user.displayName || user.email) &&
                                 <div className='d-flex user-info'>
-                                    <p className='me-3 logged-user-name'>{user.displayName}</p>
+                                    <p className='me-3 text-white logged-user-name'>{user.displayName}</p>
                                     <figure>
-                                        <img className='user-img' src={user.photoURL} alt={user.displayName + " Image"} />
+                                        <img className='user-img' src={user.photoURL} alt='userImage' />
                                     </figure>
                                 </div>
                             }

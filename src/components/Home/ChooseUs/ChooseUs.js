@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import './ChooseUs.css'
 const ChooseUs = () => {
     const [quality, setQuality] = useState([]);
+     // use this state to determain data is lodded or not
+     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        fetch('http://localhost:5000/quality')
+        setIsLoading(true)
+        fetch('https://young-inlet-90443.herokuapp.com/quality')
             .then(res => res.json())
-            .then(data => setQuality(data))
-    }, [])
+            .then(data => {
+                setQuality(data)
+                setIsLoading(false)
+            })
+    }, []);
+    if (isLoading) {
+        return (
+            <div className='text-center'>
+                <Spinner style={{ marginTop: '120px' }} animation="grow" variant="warning" />
+            </div>
+        );
+    };
     return (
         <Container id='chooseus'>
             <Row className='g-5'>
