@@ -23,9 +23,9 @@ const Cars = () => {
         );
     };
     return (
-        <Container>
+        <Container id='cars'>
             <Row className='g-4'>
-                <h1>Popular Makes</h1>
+                <h1 className='title'>Popular Makes</h1>
                 {
                     cars.map(car=> <Car key={car?._id} car={car}></Car>)
                 }

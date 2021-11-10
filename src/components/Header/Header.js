@@ -24,11 +24,15 @@ const Header = () => {
                         <Nav className="me-auto d-flex justify-content-start align-items-center">
                             <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#hero'> Home</NavHashLink>
 
-                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#destination'> Destinatios</NavHashLink>
+                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#cars'> Cars</NavHashLink>
+
+                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#review'> Reviews</NavHashLink>
+
+                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#chooseus'> Why Us</NavHashLink>
+
+                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#download'> Download</NavHashLink>
 
                             <NavLink activeStyle={activeStyle} className="nav-link" to='/explorecars'> Explore Cars</NavLink>
-
-                            <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#blog'> Blog</NavHashLink>
 
 
                             {/* When User logged in "Logout button" when not Login & SignUp button */}

@@ -1,23 +1,17 @@
 [
     {
-      "name": "Rakib Istiak",
-      "designation": "CEO, WebLab",
-      "description": "For 2022, you'll see some minor differences in the badging on the Telluride. Kia redesigned its logo and the Telluride emblem on the rear features a different font and wider spacing. All models now come standard with a 10.25-inch screen display that includes navigation, plus automatic climate control.",
-      "img": "https://i.ibb.co/PZM81KY/Ellipse-91.png",
-      "rating": 4
+      "icon": "https://i.ibb.co/hDJWW8C/badge.png",
+      "name": "Wide range of brands",
+      "description": "In recent years, where technology has been one important aspect of choosing a specific car brand. A car brand which prioritizes longevity over anything. This is considered to be the most reliable brands in between the customers."
     },
     {
-      "name": "Emon",
-      "designation": "GM, Softtrick",
-      "description": "At Edmunds we tested a 2020 Telluride SX V6 AWD as part of our long-term test fleet. It's proved to be a comfortable, capable and dependable family hauler, and, if anything, our fondness for the Telluride has only grown after several thousand miles behind the wheel",
-      "img": "https://i.ibb.co/BTkMNPT/Ellipse-92.png",
-      "rating": 5
+      "icon": "https://i.ibb.co/2jS5NfD/trust.png",
+      "name": "Trusted by our clients",
+      "description": "Trust comes with time — it isn't effortless and is often an uphill battle. However, when mistakes are made but dealt with in a humble and ethical manner, trust is established. It also happens when there is a personal connection formed, which requires intention."
     },
     {
-      "name": "Sanjida Snigdha",
-      "designation": "MD, Hello Car",
-      "description": "The 2022 Kia Telluride is available in four trim levels: LX, S, EX and SX. Each trim comes standard with a 3.8-liter V6 (291 horsepower, 262 lb-ft of torque) paired to an eight-speed automatic transmission. Front-wheel drive is standard",
-      "img": "https://i.ibb.co/rdx0GCh/Ellipse-90.png",
-      "rating": 5
+      "icon": "https://i.ibb.co/GWRrS7T/cash.png",
+      "name": "Fast & easy financing",
+      "description": "We can help with your financing plan, we can offer some tips and tricks. Drive off with this dream car of yours regardless of your credit history."
     }
   ]

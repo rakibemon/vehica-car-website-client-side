@@ -1,0 +1,17 @@
+.quality-card{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+.quality-logo{
+    max-width: 80px;
+}
+.quality-name{
+    margin: 40px 0px;
+}
+.quality-desc{
+    color: #AEB0B4;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0px;
+}
