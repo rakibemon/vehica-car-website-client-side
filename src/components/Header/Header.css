@@ -1,0 +1,47 @@
+.logo{
+    max-height: 32px;
+    height: 32px;
+}
+.nav-link{
+    text-decoration: none;
+    font-weight: 400;
+    color: #fff !important;
+    transition: all 0.01ms linear;
+    margin-right: 10px;
+    padding: 8px 16px !important;
+}
+
+.nav-link:hover{
+    color: #fff !important;
+    background-color: #FF4605;
+}
+.nav-link-user-active{
+    text-decoration: none;
+    font-weight: 600;
+    color: #0000008C;
+    transition: all 0.01ms linear;
+    margin-right: 10px;
+    padding: 8px 16px !important;
+}
+.nav-link-user-active:hover{
+    color: #fff !important;
+    background-color: #FF4605;
+}
+.user-img{
+        max-width: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+}
+.logged-user-name{
+    position: relative;
+    top: 10px;
+}
+
+/* For Mobile */
+@media only screen and (max-width:600px){
+    .user-info{
+        margin-top: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+}
