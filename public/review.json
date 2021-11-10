@@ -1,10 +1,23 @@
 [
     {
-      "name": "Audi R8 performance Spyder",
-      "description": "Strap yourself in for the breathtaking power of the Audi R8 V10 performance Spyder. Its driver-focused interior and heightened aural experience truly come to life when the top is down for an even sportier driving experience.",
-      "img": "https://i.ibb.co/yV5VbhT/R8-Spyder.jpg",
-      "price": 160990,
-      "modelYear": "2022",
-      "category": "Automatic"
+      "name": "Rakib Istiak",
+      "designation": "CEO, WebLab",
+      "description": "For 2022, you'll see some minor differences in the badging on the Telluride. Kia redesigned its logo and the Telluride emblem on the rear features a different font and wider spacing. All models now come standard with a 10.25-inch screen display that includes navigation, plus automatic climate control.",
+      "img": "https://i.ibb.co/PZM81KY/Ellipse-91.png",
+      "rating": 4
+    },
+    {
+      "name": "Emon",
+      "designation": "GM, Softtrick",
+      "description": "At Edmunds we tested a 2020 Telluride SX V6 AWD as part of our long-term test fleet. It's proved to be a comfortable, capable and dependable family hauler, and, if anything, our fondness for the Telluride has only grown after several thousand miles behind the wheel",
+      "img": "https://i.ibb.co/BTkMNPT/Ellipse-92.png",
+      "rating": 5
+    },
+    {
+      "name": "Sanjida Snigdha",
+      "designation": "MD, Hello Car",
+      "description": "The 2022 Kia Telluride is available in four trim levels: LX, S, EX and SX. Each trim comes standard with a 3.8-liter V6 (291 horsepower, 262 lb-ft of torque) paired to an eight-speed automatic transmission. Front-wheel drive is standard",
+      "img": "https://i.ibb.co/rdx0GCh/Ellipse-90.png",
+      "rating": 5
     }
   ]
