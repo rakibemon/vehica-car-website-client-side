@@ -34,10 +34,8 @@ function App() {
               <ExploreCars/>
               <Footer/>
             </Route>
-            <Route exact path='/dashboard'>
-              <Header />
+            <Route path='/dashboard'>
               <Dashboard/>
-              <Footer/>
             </Route>
           </Switch>
         </Router>

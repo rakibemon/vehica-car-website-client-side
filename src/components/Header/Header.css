@@ -44,4 +44,7 @@
         align-items: center;
         justify-content: center;
     }
+    .logged-user-name{
+        top: 0px;
+    }
 }
