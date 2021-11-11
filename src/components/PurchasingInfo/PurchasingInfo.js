@@ -19,11 +19,11 @@ const BookingInfo = () => {
         if (singleCar) {
             data.carInfo = singleCar;
             data.status = 'Pending';
-            axios.post('https://young-inlet-90443.herokuapp.com/spurchasingInfo', data)
+            axios.post('https://young-inlet-90443.herokuapp.com/purchasingInfo', data)
                 .then(data => {
                     if (data) {
                         alert("Purchase Successfully");
-                        // history.push('/home')
+                        history.push('/dashboard')
                         reset();
                     }
                 })
@@ -31,7 +31,7 @@ const BookingInfo = () => {
 
     };
     return (
-        <div className='mt-5 pt-5'>
+        <div className='mt-5 w-50 mx-auto'>
 
         <Container className='d-flex justify-content-center align-items-center' style={{ marginTop: '100px', height: '60vh' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +63,7 @@ const BookingInfo = () => {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formPlaintextEmail">
-                        <Form.Label column sm="2">Price ($)</Form.Label>
+                        <Form.Label column sm="2">Price ($USD)</Form.Label>
                         <Col sm="10">
                             <Form.Control style={{ fontWeight: '700', color: '#50C878' }} plaintext readOnly defaultValue={singleCar?.price}/>
                         </Col>
@@ -76,12 +76,23 @@ const BookingInfo = () => {
                     </Form.Group>
                 </Row>
 
+                <Row className="mb-3">
 
-
-                <Form.Group className="mb-3" controlId="formGridAddress1">
+                <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
                     <Form.Label>Address</Form.Label>
                     <Form.Control  {...register("address", { required: true })} placeholder="House, Road, PS" />
                 </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridPayMethod">
+                        <Form.Label>Payment Meythod</Form.Label>
+                        <Form.Select {...register("PaymentMthod", { required: true })}>
+                            <option>Credit Card</option>
+                            <option>Paypal</option>
+                            <option>Mobile Banking</option>
+                            <option>Cash On Delivery</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Row>
 
 
 
