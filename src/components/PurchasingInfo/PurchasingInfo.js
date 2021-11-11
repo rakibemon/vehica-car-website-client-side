@@ -10,7 +10,7 @@ const BookingInfo = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const { carId } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/car/${carId}`)
+        fetch(`https://young-inlet-90443.herokuapp.com/car/${carId}`)
             .then(res => res.json())
             .then(data => setSingleCar(data))
     }, [carId]);
@@ -19,7 +19,7 @@ const BookingInfo = () => {
         if (singleCar) {
             data.carInfo = singleCar;
             data.status = 'Pending';
-            axios.post('http://localhost:5000/purchasingInfo', data)
+            axios.post('https://young-inlet-90443.herokuapp.com/spurchasingInfo', data)
                 .then(data => {
                     if (data) {
                         alert("Purchase Successfully");
