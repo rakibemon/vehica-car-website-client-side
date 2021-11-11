@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import './MyOrder.css';
 const MyOrder = () => {
@@ -57,7 +57,7 @@ const MyOrder = () => {
                                         <p className='order-buttom'>{category}</p>
                                     </div>
                                     <div className="text-center">
-                                        <Button className='cancel-btn mt-3' onClick={()=>deleteOrder(_id, status)}> Cancel Order</Button>
+                                        <button className='buy-button mt-3 py-2 px-4' onClick={()=>deleteOrder(_id, status)}> Cancel Order</button>
                                     </div>
                                 </div>
                             </Col>

@@ -12,6 +12,7 @@ import MyOrder from '../MyOrder/MyOrder';
 import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from '../../hooks/useAuth';
+import AdminRoute from '../../AdminRoute/AdminRoute';
 function Navbar() {
     const { user, logOut } = useAuth();
     const [sidebar, setSidebar] = useState(false);
@@ -76,12 +77,12 @@ function Navbar() {
                 <Route exact path={`${path}/myorder`}>
                     <MyOrder></MyOrder>
                 </Route>
-                <Route exact path={`${path}/allOrders`}>
+                <AdminRoute exact path={`${path}/allOrders`}>
                     <ManageAllOrder></ManageAllOrder>
-                </Route>
-                <Route exact path={`${path}/makeadmin`}>
+                </AdminRoute>
+                <AdminRoute exact path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
-                </Route>
+                </AdminRoute>
             </Switch>
         </>
     );

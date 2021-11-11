@@ -1,10 +1,39 @@
-import React from 'react';
-
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap'
+import './MakeAdmin.css'
 const MakeAdmin = () => {
+    const [email, setEmail] = useState('');
+    const collectEmail = (event) =>{
+        setEmail(event.target.value)
+    };
+    const handleMakeAdmin = (event) =>{
+        const adminEmail = {email:email};
+        axios.put('http://localhost:5000/user/admin', adminEmail)
+        .then(data=>{
+            console.log(data.data)
+            if(!data.data.matchedCount){
+                alert("This User is not exist in out DB")
+            }
+            else if(data.data.modifiedCount === 0 && data.data.matchedCount === 1){
+                alert("This User Already in Admin Role")
+            }
+            else{
+                alert("Make Admin Successfully")
+            }
+        });
+        event.preventDefault();
+    }
     return (
-        <div>
-            <h2>This is Make Admin</h2>
-        </div>
+        <Form className='form-container w-50 mx-auto'>
+            <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control onChange={collectEmail} type="email" placeholder="admin@support.com" />
+            </Form.Group>
+            <Button onClick={handleMakeAdmin} className='regular-button' type="submit">
+                Make Admin
+            </Button>
+        </Form>
     );
 };
 

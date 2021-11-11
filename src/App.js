@@ -9,6 +9,7 @@ import ExploreCars from './components/ExploreCars/ExploreCars';
 import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 import PurchasingInfo from './components/PurchasingInfo/PurchasingInfo';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Registration from './components/Registration/Registration';
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
             <Route exact path='/login'>
               <Header />
               <Login></Login>
+              <Footer/>
+            </Route>
+            <Route exact path='/registration'>
+              <Header />
+              <Registration/>
               <Footer/>
             </Route>
             <Route exact path='/explorecars'>
