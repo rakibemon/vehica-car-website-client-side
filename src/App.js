@@ -7,6 +7,8 @@ import Login from './components/Login/Login';
 import Footer from './components/Footer/Footer';
 import ExploreCars from './components/ExploreCars/ExploreCars';
 import Dashboard from './components/Dashboard/Dashboard/Dashboard';
+import PurchasingInfo from './components/PurchasingInfo/PurchasingInfo';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -34,9 +36,14 @@ function App() {
               <ExploreCars/>
               <Footer/>
             </Route>
-            <Route path='/dashboard'>
+            <PrivateRoute exact path='/car/:carId'>
+              <Header />
+              <PurchasingInfo/>
+              <Footer/>
+            </PrivateRoute>
+            <PrivateRoute path='/dashboard'>
               <Dashboard/>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>

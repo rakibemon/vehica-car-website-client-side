@@ -1,8 +1,13 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import './Car.css'
 const Car = ({ car }) => {
-    const { name, description, img, price, modelYear, category } = car || {};
+    const { _id, name, description, img, price, modelYear, category } = car || {};
+    const history = useHistory();
+    const handleBuyNow = (id) =>{
+        history.push(`/car/${id}`)
+    };
     return (
         <Col xs={12} md={6} lg={4}>
             <div className='car-card'>
@@ -17,7 +22,7 @@ const Car = ({ car }) => {
                     <div className="d-flex mt-3">
                         <p className="model-year">{modelYear}</p>
                         <p className="mx-4 category">{category}</p>
-                        <button className="buy-button">Buy Now </button>
+                        <button className="buy-button" onClick={() => handleBuyNow(_id)}>Buy Now </button>
                     </div>
                 </div>
             </div>
