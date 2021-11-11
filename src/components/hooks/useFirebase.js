@@ -56,7 +56,7 @@ const useFirebase = () => {
     // post email reg data to Database
     const saveUser = (email, name) => {
         const user = { email: email, displayName: name }
-        axios.post('http://localhost:5000/users', user)
+        axios.post('https://young-inlet-90443.herokuapp.com/users', user)
             .then(data => {
                 // send data to Database
             }
@@ -65,7 +65,7 @@ const useFirebase = () => {
     // Post Google Sign in User info to DB
     const googleSaveUser = (email, displayName) => {
         const user = { email, displayName }
-        axios.put('http://localhost:5000/users', user)
+        axios.put('https://young-inlet-90443.herokuapp.com/users', user)
             .then(data => {
                 // Send Data to Database
             }
@@ -87,7 +87,7 @@ const useFirebase = () => {
 
     // for admin check
     useEffect(() => {
-        axios.get(`http://localhost:5000/user/${user?.email}`)
+        axios.get(`https://young-inlet-90443.herokuapp.com/user/${user?.email}`)
             .then(data => {
                 setAdmin(data?.data?.admin)
             })

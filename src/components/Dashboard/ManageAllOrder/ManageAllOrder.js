@@ -21,7 +21,7 @@ const ManageAllOrder = () => {
     // Load all user data from DB
     useEffect(() => {
         setIsLoading(true)
-        axios.get('http://localhost:5000/allOrder')
+        axios.get('https://young-inlet-90443.herokuapp.com/allOrder')
             .then(data => {
                 setAllOrder(data.data);
                 setIsLoading(false)
@@ -41,7 +41,7 @@ const ManageAllOrder = () => {
     const handleDelete = (id) => {
         const warning = window.confirm("Are you sure to cancle Order")
         if (warning) {
-            axios.delete(`http://localhost:5000/delete/${id}`)
+            axios.delete(`https://young-inlet-90443.herokuapp.com/delete/${id}`)
                 .then(data => {
                     if (data) {
                         alert('Booking Canceled Successfully');
@@ -54,7 +54,7 @@ const ManageAllOrder = () => {
     // Update Status Pending to Confirm
     const handleStatus = (id) => {
         const status = { status: updatedStatus };
-        axios.put(`http://localhost:5000/status/${id}`, status)
+        axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
             .then(data => {
                 if (data) {
                     alert("Status Updated to Confirmed");
