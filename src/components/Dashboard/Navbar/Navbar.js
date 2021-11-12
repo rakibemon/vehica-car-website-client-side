@@ -3,8 +3,9 @@ import { Switch, Route, useRouteMatch } from 'react-router';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as FiIcons from 'react-icons/fi';
+import * as MdIcons from 'react-icons/md';
+import * as RiIcons from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import Home from '../../Home/Home/Home'
@@ -13,8 +14,10 @@ import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from '../../AdminRoute/AdminRoute';
+import AddAProduct from '../AddAProduct/AddAProduct';
+import AddReview from '../AddReview/AddReview';
 function Navbar() {
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
@@ -42,22 +45,53 @@ function Navbar() {
                                 <AiIcons.AiOutlineClose />
                             </Link>
                         </li>
+
                         <li className='nav-text'>
                             <Link to='/home'>
                                 <AiIcons.AiFillHome />
                                 <span>Home</span>
                             </Link>
                         </li>
-                        {SidebarData.map((item, index) => {
-                            return (
-                                <li key={index} className={item.className}>
-                                    <Link to={`${url}${item.path}`}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
+
+                        <li className='nav-text'>
+                            <Link to={`${url}/myorder`}>
+                                <AiIcons.AiOutlineShoppingCart />
+                                <span>My Orders</span>
+                            </Link>
+                        </li>
+
+                        {
+                            admin && <div>
+                                <li className='nav-text'>
+                                    <Link to={`${url}/allOrders`}>
+                                        <MdIcons.MdManageAccounts />
+                                        <span>Manage All Order</span>
                                     </Link>
                                 </li>
-                            );
-                        })}
+
+                                <li className='nav-text'>
+                                    <Link to={`${url}/makeadmin`}>
+                                        <RiIcons.RiAdminFill />
+                                        <span>Make Admin</span>
+                                    </Link>
+                                </li>
+
+                                <li className='nav-text'>
+                                    <Link to={`${url}/addProduct`}>
+                                        <AiIcons.AiFillCar />
+                                        <span>Add a New Product</span>
+                                    </Link>
+                                </li>
+                            </div>
+                        }
+
+                        <li className='nav-text'>
+                            <Link to={`${url}/addReview`}>
+                                <MdIcons.MdRateReview />
+                                <span>Add Review</span>
+                            </Link>
+                        </li>
+
                         <li className='nav-text' onClick={logOut}>
                             <Link to='/home'>
                                 <FiIcons.FiLogOut />
@@ -83,6 +117,12 @@ function Navbar() {
                 <AdminRoute exact path={`${path}/makeadmin`}>
                     <MakeAdmin></MakeAdmin>
                 </AdminRoute>
+                <AdminRoute exact path={`${path}/addProduct`}>
+                    <AddAProduct></AddAProduct>
+                </AdminRoute>
+                <Route exact path={`${path}/addReview`}>
+                    <AddReview></AddReview>
+                </Route>
             </Switch>
         </>
     );

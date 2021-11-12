@@ -69,9 +69,6 @@ const Login = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
 
 
-                            {/* Currently We have Google Login Only Later we will add more options */}
-
-
                             <Form.Group className="mb-3" controlId="formBasicEmailLogin">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control {...register("email")} required type="email" placeholder="Enter email" />
