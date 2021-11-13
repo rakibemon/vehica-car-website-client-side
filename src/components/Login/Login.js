@@ -7,7 +7,7 @@ import loginImg from '../../img/login.jpg'
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 const Login = () => {
-    const { signInUsingGoogle, loginWithEmail, setUser,error, setError,isLoading, setIsLoading,googleSaveUser } = useAuth();
+    const { signInUsingGoogle, loginWithEmail, setUser, error, setError, isLoading, setIsLoading, googleSaveUser } = useAuth();
     const history = useHistory();
     const location = useLocation();
     //where user wanted to go or send user to homepage
@@ -18,7 +18,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 setUser(user);
-                googleSaveUser(user.email , user.displayName)
+                googleSaveUser(user.email, user.displayName)
                 setError('');
                 history.push(redirect_uri)
             })
@@ -35,7 +35,7 @@ const Login = () => {
     }, []);
 
 
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         loginWithEmail(data.email, data.password)
             .then((userCredential) => {

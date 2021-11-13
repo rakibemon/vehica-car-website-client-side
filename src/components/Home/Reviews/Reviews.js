@@ -7,15 +7,15 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     // use this state to determain data is lodded or not
     const [isLoading, setIsLoading] = useState(true)
-    useEffect(()=>{
+    useEffect(() => {
         setIsLoading(true)
         fetch('https://young-inlet-90443.herokuapp.com/review')
-        .then(res=> res.json())
-        .then(data => {
-            setReviews(data)
-            setIsLoading(false)
-        })
-    },[]);
+            .then(res => res.json())
+            .then(data => {
+                setReviews(data)
+                setIsLoading(false)
+            })
+    }, []);
 
     if (isLoading) {
         return (
@@ -29,7 +29,7 @@ const Reviews = () => {
             <Row className='g-4'>
                 <h1 className='title'> Testimonial </h1>
                 {
-                    reviews.map(review=> <Review key={review?._id} review={review}> </Review>)
+                    reviews.map(review => <Review key={review?._id} review={review}> </Review>)
                 }
             </Row>
         </Container>

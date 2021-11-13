@@ -7,6 +7,8 @@ import useAuth from '../../hooks/useAuth';
 const AddReview = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    // Send user review on DB
     const onSubmit = data => {
         data.name = user?.displayName;
         axios.post('https://young-inlet-90443.herokuapp.com/addReview', data)
@@ -18,9 +20,9 @@ const AddReview = () => {
             })
     };
     //change the title when change the route
-    useEffect(()=>{
-        document.title='Add Review';
-      },[]);
+    useEffect(() => {
+        document.title = 'Add Review';
+    }, []);
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>

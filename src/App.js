@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 import PurchasingInfo from './components/PurchasingInfo/PurchasingInfo';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Registration from './components/Registration/Registration';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -20,36 +21,40 @@ function App() {
             <Route exact path='/'>
               <Header />
               <Home></Home>
-              <Footer/>
+              <Footer />
             </Route>
             <Route exact path='/home'>
               <Header />
               <Home></Home>
-              <Footer/>
+              <Footer />
             </Route>
             <Route exact path='/login'>
               <Header />
               <Login></Login>
-              <Footer/>
+              <Footer />
             </Route>
             <Route exact path='/registration'>
               <Header />
-              <Registration/>
-              <Footer/>
+              <Registration />
+              <Footer />
             </Route>
             <Route exact path='/explorecars'>
               <Header />
-              <ExploreCars/>
-              <Footer/>
+              <ExploreCars />
+              <Footer />
             </Route>
             <PrivateRoute exact path='/car/:carId'>
               <Header />
-              <PurchasingInfo/>
-              <Footer/>
+              <PurchasingInfo />
+              <Footer />
             </PrivateRoute>
             <PrivateRoute path='/dashboard'>
-              <Dashboard/>
+              <Dashboard />
             </PrivateRoute>
+
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>

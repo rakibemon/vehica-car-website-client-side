@@ -17,8 +17,8 @@ const Header = () => {
             <Navbar collapseOnSelect style={{ backgroundColor: 'rgba(0,0, 0, 1)' }} expand="md" fixed='top' >
                 <Container>
                     <Navbar.Brand> <NavHashLink to="/home#hero" style={{ textDecoration: 'none' }}><img className='logo' src={logo} alt="Logo" /></NavHashLink></Navbar.Brand>
-                    <Navbar.Toggle className='nav-toggle' style={{backgroundColor:'#fff', width:'16%'}} aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse style={{ backgroundColor: 'rgba(0,0, 0, 1)'}} id="basic-navbar-nav">
+                    <Navbar.Toggle className='nav-toggle' style={{ backgroundColor: '#fff', width: '16%' }} aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse style={{ backgroundColor: 'rgba(0,0, 0, 1)' }} id="basic-navbar-nav">
 
 
                         <Nav className="ms-auto d-flex justify-content-start align-items-center">

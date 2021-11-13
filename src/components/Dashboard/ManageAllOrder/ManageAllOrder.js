@@ -13,12 +13,12 @@ const ManageAllOrder = () => {
         document.title = 'All Booking (Admin)';
     }, []);
 
-    // Update Status Pending to Confirm
+    // take Update Status Pending to Shipped or Deliveried
     const handleUpdateStatus = (e) => {
         setUpdatedStatus(e.target.value)
     };
 
-    // Load all user data from DB
+    // Load all order data from DB
     useEffect(() => {
         setIsLoading(true)
         axios.get('https://young-inlet-90443.herokuapp.com/allOrder')
@@ -37,27 +37,27 @@ const ManageAllOrder = () => {
         );
     };
 
-    // Delete specific Booking
+    // Delete specific Order
     const handleDelete = (id) => {
         const warning = window.confirm("Are you sure to cancle Order")
         if (warning) {
             axios.delete(`https://young-inlet-90443.herokuapp.com/delete/${id}`)
                 .then(data => {
                     if (data) {
-                        alert('Booking Canceled Successfully');
+                        alert('Order Canceled Successfully');
                         setDeleteAcknowledged(true)
                     }
                 })
         }
     };
 
-    // Update Status Pending to Confirm
+    // Update Status Pending to Shipped or Deliveried
     const handleStatus = (id) => {
         const status = { status: updatedStatus };
         axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
             .then(data => {
                 if (data) {
-                    alert("Status Updated to Confirmed");
+                    alert(`Status Updated to ${updatedStatus}`);
                     setModifiedAcknowledged(true)
                 }
             })
@@ -105,7 +105,7 @@ const ManageAllOrder = () => {
                                                         </Form.Select>
                                                     </Form.Group>
                                                     <Form.Group as={Col}>
-                                                        <Button className='regular-button' onClick={()=>handleStatus(order?._id)}>Change Status</Button>
+                                                        <Button className='regular-button' onClick={() => handleStatus(order?._id)}>Change Status</Button>
                                                     </Form.Group>
                                                 </Row>
 

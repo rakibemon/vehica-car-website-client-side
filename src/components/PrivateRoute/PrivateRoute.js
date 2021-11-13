@@ -5,14 +5,14 @@ import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const {user, isLoading} = useAuth();
-    //If user login is not finished
-    if (isLoading) {
-        return (
-            <div className='text-center'>
-                <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
-            </div>
-        )
-    }
+  //If user login is not finished
+  if (isLoading) {
+    return (
+      <div className='text-center'>
+        <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
+      </div>
+    )
+  }
     return (
         <Route
         {...rest}

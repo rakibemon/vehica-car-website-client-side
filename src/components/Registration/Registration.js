@@ -7,20 +7,20 @@ import useAuth from '../hooks/useAuth';
 import './Registration.css'
 
 const Registration = () => {
-    const { setUser, setError, error,isLoading, setIsLoading, signInUsingGoogle, emailRegister,googleSaveUser} = useAuth();
+    const { setUser, setError, error, isLoading, setIsLoading, signInUsingGoogle, emailRegister, googleSaveUser } = useAuth();
     const history = useHistory();
     const location = useLocation();
     const [regData, setRegData] = useState({});
 
     // Collecte User Info
-    const handleOnBlur = (event) =>{
+    const handleOnBlur = (event) => {
         const field = event.target.name;
         const value = event.target.value;
-        const newRegData = {...regData};
+        const newRegData = { ...regData };
         newRegData[field] = value;
         setRegData(newRegData);
     };
-    
+
     //Where user want to go or send him to home page
     const redirect_uri = location.state?.from || '/home';
 
@@ -30,7 +30,7 @@ const Registration = () => {
             .then(result => {
                 const user = result.user
                 setUser(user);
-                googleSaveUser(user.email , user.displayName)
+                googleSaveUser(user.email, user.displayName)
                 setError('');
                 history.push(redirect_uri)
             })
@@ -44,24 +44,24 @@ const Registration = () => {
 
     // Create user with Email and Password
     const handleRegister = (event) => {
-        emailRegister(regData.email,regData.password, regData.displayName, history, redirect_uri)
+        emailRegister(regData.email, regData.password, regData.displayName, history, redirect_uri)
         event.preventDefault();
 
     };
 
-     //change the title when change the route
-     useEffect(()=>{
-        document.title='Registration';
-      },[]);
+    //change the title when change the route
+    useEffect(() => {
+        document.title = 'Registration';
+    }, []);
 
-//If user login is not finished
-if (isLoading) {
-    return (
-        <div className='text-center'>
-            <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
-        </div>
-    )
-}
+    //If user login is not finished
+    if (isLoading) {
+        return (
+            <div className='text-center'>
+                <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
+            </div>
+        )
+    }
     return (
         <Container className='d-flex sign' style={{ marginTop: '120px' }}>
             <Row className='d-flex justify-content-center align-items-center w-75 mx-auto login-row'>

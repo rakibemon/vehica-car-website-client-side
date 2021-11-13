@@ -54,7 +54,7 @@ function Navbar() {
                             </Link>
                         </li>
 
-                        { !admin && <div>
+                        {!admin && <div>
                             <li className='nav-text'>
                                 <Link to={`${url}/myorder`}>
                                     <AiIcons.AiOutlineShoppingCart />
@@ -117,12 +117,12 @@ function Navbar() {
                 <Route exact path="/">
                     <Home></Home>
                 </Route>
-                 <Route exact path={path}>
-                 {!admin ?
-                    <MyOrder></MyOrder>
-                    :
-                    <ManageAllOrder/>
-                 }
+                <Route exact path={path}>
+                    {!admin ?
+                        <MyOrder></MyOrder>
+                        :
+                        <ManageAllOrder />
+                    }
                 </Route>
                 <Route exact path={`${path}/myorder`}>
                     <MyOrder></MyOrder>

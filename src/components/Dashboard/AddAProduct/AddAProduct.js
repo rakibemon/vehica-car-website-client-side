@@ -4,19 +4,20 @@ import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstra
 import { useForm } from "react-hook-form";
 const AddAProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    // send data to store on DB
     const onSubmit = data => {
         axios.post('https://young-inlet-90443.herokuapp.com/addProduct', data)
-        .then(data=>{
-            if(data.data.acknowledged){
-                alert("Data Inserted Successfully")
-                reset();
-            }
-        })
+            .then(data => {
+                if (data.data.acknowledged) {
+                    alert("Data Inserted Successfully")
+                    reset();
+                }
+            })
     };
     //change the title when change the route
-    useEffect(()=>{
-        document.title='Add a Product(Admin)';
-      },[]);
+    useEffect(() => {
+        document.title = 'Add a Product(Admin)';
+    }, []);
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
