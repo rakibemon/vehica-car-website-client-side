@@ -15,6 +15,10 @@ const ExploreCars = () => {
             setIsLoading(false)
         })
     },[]);
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='Explore Cars';
+      },[]);
     // Show spinner when data is not lodded
     if (isLoading) {
         return (

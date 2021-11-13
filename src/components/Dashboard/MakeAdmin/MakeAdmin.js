@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap'
 import './MakeAdmin.css'
 const MakeAdmin = () => {
@@ -22,7 +22,12 @@ const MakeAdmin = () => {
             }
         });
         event.preventDefault();
-    }
+    };
+
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='Make Admin(Admin)';
+      },[]);
     return (
         <Form className='form-container mx-auto'>
             <Form.Group className="mb-4" controlId="formBasicEmail">

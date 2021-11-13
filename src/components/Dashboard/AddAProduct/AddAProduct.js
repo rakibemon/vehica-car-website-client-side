@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 const AddAProduct = () => {
@@ -13,6 +13,10 @@ const AddAProduct = () => {
             }
         })
     };
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='Add a Product(Admin)';
+      },[]);
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
@@ -17,6 +17,10 @@ const AddReview = () => {
                 }
             })
     };
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='Add Review';
+      },[]);
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>

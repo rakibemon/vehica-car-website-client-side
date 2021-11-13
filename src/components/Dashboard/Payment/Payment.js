@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Payment = () => {
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='Payment';
+      },[]);
     return (
         <div>
             <h3 className="text-center mt-4"> Payment System Comming soon.</h3>

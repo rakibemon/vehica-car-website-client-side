@@ -16,6 +16,10 @@ const MyOrder = () => {
             setIsLoading(false)
         })
     },[user?.email, deleteAcknowledged]);
+    //change the title when change the route
+    useEffect(()=>{
+        document.title='My Order';
+      },[]);
     //If user login is not finished
     if (isLoading) {
         return (
