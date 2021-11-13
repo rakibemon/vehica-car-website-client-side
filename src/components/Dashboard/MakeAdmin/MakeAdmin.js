@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { Button, Form } from 'react-bootstrap'
 import './MakeAdmin.css'
 const MakeAdmin = () => {
@@ -12,13 +13,27 @@ const MakeAdmin = () => {
         axios.put('https://young-inlet-90443.herokuapp.com/user/admin', adminEmail)
             .then(data => {
                 if (!data.data.matchedCount) {
-                    alert("This User is not exist in out DB")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'This User is not exist in out DB',
+                      })
                 }
                 else if (data.data.modifiedCount === 0 && data.data.matchedCount === 1) {
-                    alert("This User Already in Admin Role")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'This User Already in Admin Role',
+                      })
                 }
                 else {
-                    alert("Make Admin Successfully")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Make Admin successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             });
         event.preventDefault();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import * as AiIcons from 'react-icons/ai';
 import Rating from 'react-rating';
 import './Review.css'
@@ -11,7 +11,7 @@ const Review = ({ review }) => {
                 <div>
                     <div className="d-flex review-card">
                         <figure>
-                            <img className='review-img' src={img} alt="User Img" />
+                            <img className='review-img rounded-circle' src={img} alt="User Img" />
                         </figure>
                         <div className='d-flex flex-column justify-content-center'>
                             <h5>{name}</h5>
@@ -29,6 +29,7 @@ const Review = ({ review }) => {
                     </div>
                 </div>
             </Col>
+
         </>
     );
 };

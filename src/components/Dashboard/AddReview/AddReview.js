@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 
@@ -15,7 +16,13 @@ const AddReview = () => {
         axios.post('https://young-inlet-90443.herokuapp.com/addReview', data)
             .then(data => {
                 if (data.data.acknowledged) {
-                    alert("Review added Successfully")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your Review has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     reset();
                 }
             })

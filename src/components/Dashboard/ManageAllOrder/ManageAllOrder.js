@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Button, Spinner, Form, Col, Row } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import './ManageAllOrder.css'
 const ManageAllOrder = () => {
     const [allOrder, setAllOrder] = useState([]);
@@ -39,16 +40,32 @@ const ManageAllOrder = () => {
 
     // Delete specific Order
     const handleDelete = (id) => {
-        const warning = window.confirm("Are you sure to cancle Order")
-        if (warning) {
-            axios.delete(`https://young-inlet-90443.herokuapp.com/delete/${id}`)
-                .then(data => {
-                    if (data) {
-                        alert('Order Canceled Successfully');
-                        setDeleteAcknowledged(true)
-                    }
-                })
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    axios.delete(`https://young-inlet-90443.herokuapp.com/deleteOrder/${id}`)
+                        .then(data => {
+                            if (data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Users Order has been cancled',
+                                    'success'
+                                )
+                                setDeleteAcknowledged(!deleteAcknowledged)
+                            }
+                        })
+                )
+            }
+        })
+
     };
 
     // Update Status Pending to Shipped or Deliveried
@@ -57,13 +74,19 @@ const ManageAllOrder = () => {
         axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
             .then(data => {
                 if (data) {
-                    alert(`Status Updated to ${updatedStatus}`);
-                    setModifiedAcknowledged(true)
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: (`Status Updated to ${updatedStatus}`),
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setModifiedAcknowledged(!modifiedAcknowledged)
                 }
             })
     };
     return (
-        <Container fluid style={{marginTop:'100px'}}>
+        <Container fluid style={{ marginTop: '100px' }}>
             <h4 className="text-center">Total Order : {allOrder.length}</h4>
             {
                 <Table responsive striped bordered hover>
@@ -96,15 +119,15 @@ const ManageAllOrder = () => {
 
                                         <td>
                                             <Form>
-                                                <Row className='w-75'>
-                                                    <Form.Group as={Col} controlId="formGridStatus">
+                                                <Row style={{ width: '85%' }}>
+                                                    <Form.Group as={Col} xs={5} controlId="formGridStatus">
                                                         <Form.Select onChange={handleUpdateStatus} defaultValue={order?.status}>
                                                             <option>Pending</option>
                                                             <option>Shipped</option>
                                                             <option>Delivered</option>
                                                         </Form.Select>
                                                     </Form.Group>
-                                                    <Form.Group as={Col}>
+                                                    <Form.Group as={Col} xs={7}>
                                                         <Button className='regular-button' onClick={() => handleStatus(order?._id)}>Change Status</Button>
                                                     </Form.Group>
                                                 </Row>

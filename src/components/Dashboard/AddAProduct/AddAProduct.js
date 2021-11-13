@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 const AddAProduct = () => {
@@ -9,7 +10,13 @@ const AddAProduct = () => {
         axios.post('https://young-inlet-90443.herokuapp.com/addProduct', data)
             .then(data => {
                 if (data.data.acknowledged) {
-                    alert("Data Inserted Successfully")
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Your Review has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     reset();
                 }
             })

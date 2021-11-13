@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import './MyOrder.css';
 const MyOrder = () => {
@@ -29,24 +30,43 @@ const MyOrder = () => {
         )
     }
     const deleteOrder = (id, status) => {
-        if (status === "Shipped") {
-            return alert("Shipped Order Can't Canceled")
+        if (status === "Shipped" || status === "Delivered") {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: (`${status} Order Can't Canceled`),
+            })
         }
-        const warning = window.confirm("Are you sure to cancle Order")
-        if (warning) {
-            axios.delete(`https://young-inlet-90443.herokuapp.com/deleteOrder/${id}`)
-                .then(data => {
-                    console.log(data);
-                    if (data) {
-                        alert('Car Canceled Successfully');
-                        setDeleteAcknowledged(true)
-                    }
-                })
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    axios.delete(`https://young-inlet-90443.herokuapp.com/deleteOrder/${id}`)
+                        .then(data => {
+                            console.log(data);
+                            if (data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your Order has been Canceled.',
+                                    'success'
+                                )
+                                setDeleteAcknowledged(true)
+                            }
+                        })
+                )
+            }
+        })
     };
     return (
         <Container>
-            <Row className='g-4' style={{marginTop:'100px'}}>
+            <Row className='g-4' style={{ marginTop: '100px' }}>
                 {
                     myOrders.map(order => {
                         const { _id, email, status, phone, address } = order || {};

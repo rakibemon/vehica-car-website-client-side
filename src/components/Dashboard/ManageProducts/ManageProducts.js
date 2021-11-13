@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
 
 const ManageProducts = () => {
@@ -21,16 +22,31 @@ const ManageProducts = () => {
             })
     }, [deleteAcknowledged]);
     const handleDelete = (id) => {
-        const warning = window.confirm("Are you sure to delete this Product")
-        if (warning) {
-            axios.delete(`http://localhost:5000/manageProduct/${id}`)
-                .then(data => {
-                    if (data.data.acknowledged) {
-                        alert('Car Deleted Successfully');
-                        setDeleteAcknowledged(true)
-                    }
-                })
-        };
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    axios.delete(`https://young-inlet-90443.herokuapp.com/manageProduct/${id}`)
+                        .then(data => {
+                            if (data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Car Data has been deleted',
+                                    'success'
+                                )
+                                setDeleteAcknowledged(!deleteAcknowledged)
+                            }
+                        })
+                )
+            }
+        })
     };
     // Show spinner when data is not lodded
     if (isLoading) {
