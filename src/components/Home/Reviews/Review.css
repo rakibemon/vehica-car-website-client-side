@@ -14,6 +14,18 @@
     font-weight: 500;
     margin: 10px 0px;
 }
+.rating span span{
+    margin-left: 2px;
+}
+.emptystar{
+    color: #FFCC00;
+    font-size: 30px;
+    margin-left: 0px;
+}
+.fillstar{
+    color: #FFCC00;
+    font-size: 30px;
+}
 @media only screen and (max-width:600px){
     .title{
         padding-top: 100px;

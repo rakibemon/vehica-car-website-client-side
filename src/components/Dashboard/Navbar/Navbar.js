@@ -17,6 +17,7 @@ import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddAProduct from '../AddAProduct/AddAProduct';
 import AddReview from '../AddReview/AddReview';
 import Payment from '../Payment/Payment';
+import ManageProducts from '../ManageProducts/ManageProducts';
 function Navbar() {
     const { user, logOut, admin } = useAuth();
     const [sidebar, setSidebar] = useState(false);
@@ -100,6 +101,13 @@ function Navbar() {
                                         <span>Add a New Product</span>
                                     </Link>
                                 </li>
+
+                                <li className='nav-text'>
+                                    <Link to={`${url}/manageProduct`}>
+                                        <AiIcons.AiFillEdit />
+                                        <span>Edit Product</span>
+                                    </Link>
+                                </li>
                             </div>
                         }
 
@@ -138,6 +146,9 @@ function Navbar() {
                 </AdminRoute>
                 <AdminRoute exact path={`${path}/addProduct`}>
                     <AddAProduct></AddAProduct>
+                </AdminRoute>
+                <AdminRoute exact path={`${path}/manageProduct`}>
+                    <ManageProducts></ManageProducts>
                 </AdminRoute>
                 <Route exact path={`${path}/addReview`}>
                     <AddReview></AddReview>

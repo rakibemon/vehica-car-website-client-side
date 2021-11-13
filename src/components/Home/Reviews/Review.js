@@ -1,5 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import * as AiIcons from 'react-icons/ai';
+import Rating from 'react-rating';
 import './Review.css'
 const Review = ({ review }) => {
     const { name, designation, description, img, rating } = review || {};
@@ -16,7 +18,14 @@ const Review = ({ review }) => {
                     </div>
                 </div>
                 <p className='review-desc'>{description.slice(0, 100)}</p>
-                <p>{rating}/5</p>
+                <div className='rating'>
+                    <Rating
+                        initialRating={rating}
+                        emptySymbol={<AiIcons.AiOutlineStar className='emptystar' />}
+                        fullSymbol={<AiIcons.AiFillStar className='fillstar' />}
+                        readonly
+                    />
+                </div>
             </div>
         </Col>
     );
