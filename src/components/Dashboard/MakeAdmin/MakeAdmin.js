@@ -11,7 +11,6 @@ const MakeAdmin = () => {
         const adminEmail = {email:email};
         axios.put('https://young-inlet-90443.herokuapp.com/user/admin', adminEmail)
         .then(data=>{
-            console.log(data.data)
             if(!data.data.matchedCount){
                 alert("This User is not exist in out DB")
             }

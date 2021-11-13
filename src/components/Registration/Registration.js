@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Form, Row, Button } from 'react-bootstrap';
+import { Col, Container, Form, Row, Button, Spinner } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import regImg from '../../img/login.jpg';
@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth';
 import './Registration.css'
 
 const Registration = () => {
-    const { setUser, setError, error, setIsLoading, signInUsingGoogle, emailRegister,googleSaveUser} = useAuth();
+    const { setUser, setError, error,isLoading, setIsLoading, signInUsingGoogle, emailRegister,googleSaveUser} = useAuth();
     const history = useHistory();
     const location = useLocation();
     const [regData, setRegData] = useState({});
@@ -54,7 +54,14 @@ const Registration = () => {
         document.title='Registration';
       },[]);
 
-
+//If user login is not finished
+if (isLoading) {
+    return (
+        <div className='text-center'>
+            <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
+        </div>
+    )
+}
     return (
         <Container className='d-flex sign' style={{ marginTop: '120px' }}>
             <Row className='d-flex justify-content-center align-items-center w-75 mx-auto login-row'>

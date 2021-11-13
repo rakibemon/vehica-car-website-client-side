@@ -32,4 +32,14 @@
     .login-row{
         padding-left: 0px;
     }
+    .login-img{
+        display: none;
+    }
+    .signup-text{
+        position: absolute;
+        bottom: 115px;
+    }
+    .google{
+        top: -3px;
+    }
 }

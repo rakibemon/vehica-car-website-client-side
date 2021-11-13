@@ -24,12 +24,12 @@ const ChooseUs = () => {
     return (
         <Container id='chooseus'>
             <Row className='g-5'>
-                <h1 className="title text-center">Why choose us?</h1>
+                <h2 className="title">Why choose us?</h2>
                 {
                     quality.map(data => {
                         const { _id, icon, name, description } = data || {};
                         return (
-                            <Col xs={12} md={6} lg={4} key={_id}>
+                            <Col xs={12} md={6} lg={4} key={_id} >
                                 <div className='quality-card text-center'>
                                     
                                     <figure className='text-center'>

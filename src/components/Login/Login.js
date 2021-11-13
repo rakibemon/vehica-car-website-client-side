@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Col, Container, Form, Row, Button } from 'react-bootstrap';
+import { Col, Container, Form, Row, Button, Spinner } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { useHistory, useLocation } from 'react-router';
 import './Login.css';
@@ -7,7 +7,7 @@ import loginImg from '../../img/login.jpg'
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 const Login = () => {
-    const { signInUsingGoogle, loginWithEmail, setUser, setError, setIsLoading,googleSaveUser } = useAuth();
+    const { signInUsingGoogle, loginWithEmail, setUser,error, setError,isLoading, setIsLoading,googleSaveUser } = useAuth();
     const history = useHistory();
     const location = useLocation();
     //where user wanted to go or send user to homepage
@@ -49,6 +49,14 @@ const Login = () => {
             .finally(() => setIsLoading(false))
         reset();
     };
+    //If user login is not finished
+    if (isLoading) {
+        return (
+            <div className='text-center'>
+                <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
+            </div>
+        )
+    }
     return (
 
         <Container style={{ marginTop: '120px' }}>
@@ -57,9 +65,9 @@ const Login = () => {
 
                 <Col xs={12} md={6}>
                     <figure>
-                        <img className='img-fluid' src={loginImg} alt="" />
+                        <img className='img-fluid login-img' src={loginImg} alt="" />
                     </figure>
-                    <div className='mt-5 have-account'>
+                    <div className='mt-5 signup-text'>
                         <Link to='/registration'>New here? Please Sign up </Link>
                     </div>
                 </Col>
@@ -85,6 +93,7 @@ const Login = () => {
                                 Login
                             </Button>
                             {errors.exampleRequired && <span>This field is required</span>}
+                            <p className='text-danger mt-4'> {error}</p>
                         </form>
                         <div className="d-flex mt-5 align-items-center">
                             <p className='login-with'>Or log in With</p>

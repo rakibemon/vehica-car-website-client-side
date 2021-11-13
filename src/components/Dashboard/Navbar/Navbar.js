@@ -16,6 +16,7 @@ import useAuth from '../../hooks/useAuth';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddAProduct from '../AddAProduct/AddAProduct';
 import AddReview from '../AddReview/AddReview';
+import Payment from '../Payment/Payment';
 function Navbar() {
     const { user, logOut, admin } = useAuth();
     const [sidebar, setSidebar] = useState(false);
@@ -53,12 +54,29 @@ function Navbar() {
                             </Link>
                         </li>
 
-                        <li className='nav-text'>
-                            <Link to={`${url}/myorder`}>
-                                <AiIcons.AiOutlineShoppingCart />
-                                <span>My Orders</span>
-                            </Link>
-                        </li>
+                        { !admin && <div>
+                            <li className='nav-text'>
+                                <Link to={`${url}/myorder`}>
+                                    <AiIcons.AiOutlineShoppingCart />
+                                    <span>My Orders</span>
+                                </Link>
+                            </li>
+
+                            <li className='nav-text'>
+                                <Link to={`${url}/payment`}>
+                                    <MdIcons.MdPayment />
+                                    <span>Payment</span>
+                                </Link>
+                            </li>
+                            <li className='nav-text'>
+                                <Link to={`${url}/addReview`}>
+                                    <MdIcons.MdRateReview />
+                                    <span>Add Review</span>
+                                </Link>
+                            </li>
+
+                        </div>
+                        }
 
                         {
                             admin && <div>
@@ -85,12 +103,6 @@ function Navbar() {
                             </div>
                         }
 
-                        <li className='nav-text'>
-                            <Link to={`${url}/addReview`}>
-                                <MdIcons.MdRateReview />
-                                <span>Add Review</span>
-                            </Link>
-                        </li>
 
                         <li className='nav-text' onClick={logOut}>
                             <Link to='/home'>
@@ -105,11 +117,18 @@ function Navbar() {
                 <Route exact path="/">
                     <Home></Home>
                 </Route>
-                <Route exact path={path}>
+                 <Route exact path={path}>
+                 {!admin ?
                     <MyOrder></MyOrder>
+                    :
+                    <ManageAllOrder/>
+                 }
                 </Route>
                 <Route exact path={`${path}/myorder`}>
                     <MyOrder></MyOrder>
+                </Route>
+                <Route exact path={`${path}/payment`}>
+                    <Payment></Payment>
                 </Route>
                 <AdminRoute exact path={`${path}/allOrders`}>
                     <ManageAllOrder></ManageAllOrder>

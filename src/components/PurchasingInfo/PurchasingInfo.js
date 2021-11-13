@@ -4,6 +4,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { useHistory, useParams } from 'react-router';
 import useAuth from '../hooks/useAuth';
+import './PurchasingInfo.css'
 const BookingInfo = () => {
     const history = useHistory();
     const [singleCar, setSingleCar] = useState({});
@@ -31,7 +32,7 @@ const BookingInfo = () => {
 
     };
     return (
-        <div className='mt-5 w-50 mx-auto'>
+        <div className='mt-5 purchasingInfo-container'>
 
         <Container className='d-flex justify-content-center align-items-center' style={{ marginTop: '100px', height: '60vh' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -97,14 +98,14 @@ const BookingInfo = () => {
 
 
                 <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Group as={Col} xs={6} md={4} controlId="formGridCity">
                         <Form.Label>Phone</Form.Label>
                         <Form.Control {...register("phone", { required: true })} />
                     </Form.Group>
 
 
 
-                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Group as={Col} xs={6} md={4} controlId="formGridState">
                         <Form.Label>State</Form.Label>
                         <Form.Select {...register("State", { required: true })}>
                             <option>Azimpur</option>
@@ -116,7 +117,7 @@ const BookingInfo = () => {
 
 
 
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} xs={6} md={4} controlId="formGridZip">
                         <Form.Label>Zip</Form.Label>
                         <Form.Control {...register("zip", { required: true })} />
                     </Form.Group>

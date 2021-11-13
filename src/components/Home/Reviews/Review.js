@@ -15,7 +15,7 @@ const Review = ({review}) => {
                         <h6>{designation}</h6>
                     </div>
                 </div>
-                <p className='review-desc'>{description}</p>
+                <p className='review-desc'>{description.slice(0,100)}</p>
                 <p>{rating}/5</p>
             </div>
         </Col>

@@ -20,6 +20,7 @@
     top: -16px;
     color: #fff;
     padding: 14px;
+    max-width: 400px;
 }
 .car-text h5{
     font-size: 16px;

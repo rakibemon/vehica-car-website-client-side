@@ -1,0 +1,12 @@
+.purchasingInfo-container{
+    width: 50%;
+    margin: 0px auto;
+}
+@media only screen and (max-width:600px) {
+    .purchasingInfo-container{
+        width: 100%;
+    }
+    .info-title{
+        margin-top: 200px;
+    }
+}

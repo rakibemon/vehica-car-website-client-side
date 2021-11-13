@@ -16,7 +16,7 @@ const Car = ({ car }) => {
                 </figure>
                 <div className="car-text">
                     <h5>{name}</h5>
-                    <p className='car-desc'>{description.slice(0, 80)}</p>
+                    <p className='car-desc'>{description.slice(0, 20)}</p>
                     <h6>Starting at ${price}</h6>
                     <hr style={{width:'80%', margin:'0px auto'}}/>
                     <div className="d-flex mt-3">
