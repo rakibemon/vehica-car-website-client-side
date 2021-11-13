@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <div>
             <Navbar collapseOnSelect style={{ backgroundColor: 'rgba(0,0, 0, 1)' }} expand="md" fixed='top' >
-                <Container>
+                <Container className='p-0'>
                     <Navbar.Brand> <NavHashLink to="/home#hero" style={{ textDecoration: 'none' }}><img className='logo' src={logo} alt="Logo" /></NavHashLink></Navbar.Brand>
                     <Navbar.Toggle className='nav-toggle' style={{ backgroundColor: '#fff', width: '16%' }} aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse style={{ backgroundColor: 'rgba(0,0, 0, 1)' }} id="basic-navbar-nav">

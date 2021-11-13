@@ -25,7 +25,6 @@ const ManageProducts = () => {
         if (warning) {
             axios.delete(`http://localhost:5000/manageProduct/${id}`)
                 .then(data => {
-                    console.log(data)
                     if (data.data.acknowledged) {
                         alert('Car Deleted Successfully');
                         setDeleteAcknowledged(true)
@@ -43,7 +42,7 @@ const ManageProducts = () => {
     };
     return (
         <Container>
-            <Row className='g-4 mt-4'>
+            <Row className='g-4' style={{marginTop:'100px'}}>
                 {
                     cars.map(car => {
                         const { _id, name, description, img, price, modelYear, category } = car || {};

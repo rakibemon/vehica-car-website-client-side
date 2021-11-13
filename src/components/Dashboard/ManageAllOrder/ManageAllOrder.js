@@ -63,7 +63,7 @@ const ManageAllOrder = () => {
             })
     };
     return (
-        <Container fluid className='mt-4'>
+        <Container fluid style={{marginTop:'100px'}}>
             <h4 className="text-center">Total Order : {allOrder.length}</h4>
             {
                 <Table responsive striped bordered hover>

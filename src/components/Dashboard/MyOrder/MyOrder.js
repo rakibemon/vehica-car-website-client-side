@@ -46,7 +46,7 @@ const MyOrder = () => {
     };
     return (
         <Container>
-            <Row className='g-4 mt-5'>
+            <Row className='g-4' style={{marginTop:'100px'}}>
                 {
                     myOrders.map(order => {
                         const { _id, email, status, phone, address } = order || {};
