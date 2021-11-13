@@ -14,14 +14,14 @@ const Header = () => {
     }
     return (
         <div>
-            <Navbar collapseOnSelect style={{background: 'rgba(0,0, 0, 1)'}} expand="lg" fixed='top' >
+            <Navbar collapseOnSelect style={{ backgroundColor: 'rgba(0,0, 0, 1)' }} expand="md" fixed='top' >
                 <Container>
-                    <Navbar.Brand> <NavHashLink to="/home#banner" style={{ textDecoration: 'none' }}><img className='logo' src={logo} alt="Logo" /></NavHashLink></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Brand> <NavHashLink to="/home#hero" style={{ textDecoration: 'none' }}><img className='logo' src={logo} alt="Logo" /></NavHashLink></Navbar.Brand>
+                    <Navbar.Toggle className='nav-toggle' style={{backgroundColor:'#fff', width:'20%'}} aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse style={{ backgroundColor: 'rgba(0,0, 0, 1)'}} id="basic-navbar-nav">
 
 
-                        <Nav className="me-auto d-flex justify-content-start align-items-center">
+                        <Nav className="ms-auto d-flex justify-content-start align-items-center">
                             <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#hero'> Home</NavHashLink>
 
                             <NavHashLink activeStyle={activeStyle} className="nav-link" to='/home#cars'> Cars</NavHashLink>
@@ -38,12 +38,12 @@ const Header = () => {
                             {/* When User logged in "Logout button" when not Login & SignUp button */}
                             {user.displayName || user.email ?
 
-                                <div className='d-flex'>
+                                <div className='d-md-flex'>
                                     <NavLink activeStyle={activeStyle} className="nav-link mt-1" to='/dashboard'> Dashboard</NavLink>
                                     <button className='button' onClick={logOut}> Log out</button>
                                 </div>
                                 :
-                                <NavLink className="link" to='/login'> <button className='button'>Log in</button></NavLink>
+                                <NavLink className="link log-in-button" to='/login'> <button className='button'>Log in</button></NavLink>
                             }
                         </Nav>
 

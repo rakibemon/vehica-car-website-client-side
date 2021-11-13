@@ -5,34 +5,29 @@ import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 
 const AddReview = () => {
-    const {user} = useAuth();
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const { user } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         data.name = user?.displayName;
         axios.post('https://young-inlet-90443.herokuapp.com/addReview', data)
-        .then(data=>{
-            if(data.data.acknowledged){
-                alert("Data Inserted Successfully")
-                reset();
-            }
-        })
+            .then(data => {
+                if (data.data.acknowledged) {
+                    alert("Data Inserted Successfully")
+                    reset();
+                }
+            })
     };
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <Row>
-                    <Form.Group as={Col} className="mb-3" controlId="formBasicDesignation">
+                    <Form.Group as={Col} xs={6} lg={4} className="mb-3" controlId="formBasicDesignation">
                         <Form.Label>Designation</Form.Label>
                         <Form.Control {...register("designation")} required type="text" placeholder="Designation" />
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" controlId="formBasicImage">
-                        <Form.Label>Image URl</Form.Label>
-                        <Form.Control {...register("img")} required type="text" placeholder="Image url" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} className="mb-3" controlId="formBasicRating">
+                    <Form.Group as={Col} xs={6} lg={2} className="mb-3" controlId="formBasicRating">
                         <Form.Label>Rating</Form.Label>
                         <Form.Select {...register("rating")}>
                             <option>1</option>
@@ -41,8 +36,13 @@ const AddReview = () => {
                             <option>4</option>
                             <option>5</option>
                         </Form.Select>
-
                     </Form.Group>
+
+                    <Form.Group as={Col} xs={12} lg={6} className="mb-3" controlId="formBasicImage">
+                        <Form.Label>Your Image URL</Form.Label>
+                        <Form.Control {...register("img")} required type="text" placeholder="Your image url" />
+                    </Form.Group>
+
                 </Row>
                 <FloatingLabel className="mb-3" controlId="floatingTextarea" label="Your Review">
                     <Form.Control {...register("description")}

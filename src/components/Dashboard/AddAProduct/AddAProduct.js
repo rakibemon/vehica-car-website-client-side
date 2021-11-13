@@ -17,12 +17,12 @@ const AddAProduct = () => {
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Row>
-                    <Form.Group as={Col} className="mb-3" controlId="formBasicName">
+                    <Form.Group as={Col} xs={12} lg={6} className="mb-3" controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
                         <Form.Control {...register("name")} required type="text" placeholder="Enter Car Name" />
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" controlId="formBasicImage">
+                    <Form.Group as={Col} xs={12} lg={6} className="mb-3" controlId="formBasicImage">
                         <Form.Label>Image URl</Form.Label>
                         <Form.Control {...register("img")} required type="text" placeholder="Image url" />
                         <Form.Text className="text-muted">

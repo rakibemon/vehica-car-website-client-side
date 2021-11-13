@@ -1,18 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import './MyOrder.css';
 const MyOrder = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [deleteAcknowledged, setDeleteAcknowledged] = useState(false);
+    const [isLoading, setIsLoading] = useState(true)
     const {user} = useAuth();
     useEffect(()=>{
+        setIsLoading(true)
         axios.get(`https://young-inlet-90443.herokuapp.com/myOrder?email=${user?.email}`)
         .then(data=> {
             setMyOrders(data.data);
+            setIsLoading(false)
         })
     },[user?.email, deleteAcknowledged]);
+    //If user login is not finished
+    if (isLoading) {
+        return (
+            <div className='text-center'>
+                <Spinner style={{ paddingTop: '100px' }} animation="grow" variant="warning" />
+            </div>
+        )
+    }
     const deleteOrder = (id, status) =>{
         if(status === "Shipped"){
             return alert("Shipped Order Can't Canceled")

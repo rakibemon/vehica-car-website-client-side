@@ -2,6 +2,9 @@
     max-height: 32px;
     height: 32px;
 }
+.nav-toggle span{
+    margin-left: 0px;
+}
 .nav-link{
     text-decoration: none;
     font-weight: 400;
@@ -39,6 +42,10 @@
 
 /* For Mobile */
 @media only screen and (max-width:600px){
+    .logo{
+        max-height: 28px;
+        height: 28px;
+    }
     .user-info{
         margin-top: 20px;
         align-items: center;
@@ -46,5 +53,8 @@
     }
     .logged-user-name{
         top: 0px;
+    }
+    .log-in-button{
+        margin-bottom: 16px;
     }
 }

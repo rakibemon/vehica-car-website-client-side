@@ -25,10 +25,10 @@ const MakeAdmin = () => {
         event.preventDefault();
     }
     return (
-        <Form className='form-container w-50 mx-auto'>
-            <Form.Group className="mb-3 w-50" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control onChange={collectEmail} type="email" placeholder="admin@support.com" />
+        <Form className='form-container mx-auto'>
+            <Form.Group className="mb-4" controlId="formBasicEmail">
+                <Form.Label className="mb-3">Email address</Form.Label>
+                <Form.Control className='form-email' onChange={collectEmail} type="email" placeholder="admin@support.com" />
             </Form.Group>
             <Button onClick={handleMakeAdmin} className='regular-button' type="submit">
                 Make Admin
