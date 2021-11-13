@@ -1,33 +1,67 @@
+import axios from 'axios';
 import React from 'react';
-import { Container, Form, Button, Row } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 const AddAProduct = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-
-        reset();
+        axios.post('https://young-inlet-90443.herokuapp.com/addProduct', data)
+        .then(data=>{
+            if(data.data.acknowledged){
+                alert("Data Inserted Successfully")
+                reset();
+            }
+        })
     };
     return (
         <Container style={{ marginTop: '120px' }}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Row>
-                    <Form.Group className="mb-3" controlId="formBasicEmailLogin">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control {...register("email")} required type="email" placeholder="Enter email" />
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicName">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control {...register("name")} required type="text" placeholder="Enter Car Name" />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control {...register("password")} required type="password" placeholder="Password" />
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicImage">
+                        <Form.Label>Image URl</Form.Label>
+                        <Form.Control {...register("img")} required type="text" placeholder="Image url" />
+                        <Form.Text className="text-muted">
+                            Preferred Image size is 400*200
+                        </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Remember me" />
-                    </Form.Group>
-                    <Button className='regular-button py-2 px-3 text-white' type="submit">
-                        Submit
-                    </Button>
-                    {errors.exampleRequired && <span>This field is required</span>}
                 </Row>
+
+                <Row>
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicPrice">
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control {...register("price")} required type="number" placeholder="Price" />
+                    </Form.Group>
+
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicName">
+                        <Form.Label>Model Year</Form.Label>
+                        <Form.Control {...register("modelYear")} required type="number" placeholder="Ex: 2017/2021/2022" />
+                    </Form.Group>
+
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicCategory">
+                        <Form.Label>Car Category</Form.Label>
+                        <Form.Select {...register("category")}>
+                            <option>Auto</option>
+                            <option>Manual</option>
+                        </Form.Select>
+
+                    </Form.Group>
+                </Row>
+                <FloatingLabel className="mb-3" controlId="floatingTextarea" label="Car Description">
+                    <Form.Control {...register("description")}
+                        as="textarea"
+                        style={{ height: '100px' }}
+                    />
+                </FloatingLabel>
+                <Button className='regular-button py-2 px-3 text-white' type="submit">
+                    Submit
+                </Button>
+                {errors.exampleRequired && <span>This field is required</span>}
+
             </form>
 
         </Container>
