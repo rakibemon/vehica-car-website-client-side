@@ -3,7 +3,7 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import './ChooseUs.css'
 const ChooseUs = () => {
     const [quality, setQuality] = useState([]);
-    // use this state to determain data is lodded or not
+    // use this state to determain data is lodded or not to show spinner
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         setIsLoading(true)
