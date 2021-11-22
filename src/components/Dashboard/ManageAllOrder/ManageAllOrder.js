@@ -14,9 +14,23 @@ const ManageAllOrder = () => {
         document.title = 'All Booking (Admin)';
     }, []);
 
-    // take Update Status Pending to Shipped or Deliveried
-    const handleUpdateStatus = (e) => {
-        setUpdatedStatus(e.target.value)
+    // take Update Status Pending to Shipped or Deliveried and update it
+    const handleUpdateStatus = (e,id) => {
+        setUpdatedStatus(e.target.value);
+        const status = { status: updatedStatus };
+        axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
+            .then(data => {
+                if (data) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: (`Status Updated to ${updatedStatus}`),
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setModifiedAcknowledged(!modifiedAcknowledged)
+                }
+            })
     };
 
     // Load all order data from DB
@@ -67,24 +81,6 @@ const ManageAllOrder = () => {
         })
 
     };
-
-    // Update Status Pending to Shipped or Deliveried
-    const handleStatus = (id) => {
-        const status = { status: updatedStatus };
-        axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
-            .then(data => {
-                if (data) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: (`Status Updated to ${updatedStatus}`),
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setModifiedAcknowledged(!modifiedAcknowledged)
-                }
-            })
-    };
     return (
         <Container fluid style={{ marginTop: '100px' }}>
             <h4 className="text-center">Total Order : {allOrder.length}</h4>
@@ -120,15 +116,12 @@ const ManageAllOrder = () => {
                                         <td>
                                             <Form>
                                                 <Row style={{ width: '85%' }}>
-                                                    <Form.Group as={Col} xs={5} controlId="formGridStatus">
-                                                        <Form.Select onChange={handleUpdateStatus} defaultValue={order?.status}>
+                                                    <Form.Group as={Col} controlId="formGridStatus">
+                                                        <Form.Select onChange={(e)=>handleUpdateStatus(e,order?._id)} defaultValue={order?.status}>
                                                             <option>Pending</option>
                                                             <option>Shipped</option>
                                                             <option>Delivered</option>
                                                         </Form.Select>
-                                                    </Form.Group>
-                                                    <Form.Group as={Col} xs={7}>
-                                                        <Button className='regular-button' onClick={() => handleStatus(order?._id)}>Change Status</Button>
                                                     </Form.Group>
                                                 </Row>
 
