@@ -8,29 +8,28 @@ const ManageAllOrder = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [deleteAcknowledged, setDeleteAcknowledged] = useState(false);
     const [modifiedAcknowledged, setModifiedAcknowledged] = useState(false);
-    const [updatedStatus, setUpdatedStatus] = useState('')
     //change the title when change the route
     useEffect(() => {
         document.title = 'All Booking (Admin)';
     }, []);
 
     // take Update Status Pending to Shipped or Deliveried and update it
-    const handleUpdateStatus = (e,id) => {
-        setUpdatedStatus(e.target.value);
-        const status = { status: updatedStatus };
-        axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
-            .then(data => {
-                if (data) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: (`Status Updated to ${updatedStatus}`),
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setModifiedAcknowledged(!modifiedAcknowledged)
-                }
-            })
+    const handleUpdateStatus = (e, id) => {
+            const status = { status: e.target.value };
+            axios.put(`https://young-inlet-90443.herokuapp.com/status/${id}`, status)
+                .then(data => {
+                    if (data) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: (`Status Updated to ${e.target.value}`),
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setModifiedAcknowledged(!modifiedAcknowledged)
+                    }
+                })
+        
     };
 
     // Load all order data from DB
@@ -117,7 +116,7 @@ const ManageAllOrder = () => {
                                             <Form>
                                                 <Row style={{ width: '85%' }}>
                                                     <Form.Group as={Col} controlId="formGridStatus">
-                                                        <Form.Select onChange={(e)=>handleUpdateStatus(e,order?._id)} defaultValue={order?.status}>
+                                                        <Form.Select onChange={(e) => handleUpdateStatus(e, order?._id)} defaultValue={order?.status}>
                                                             <option>Pending</option>
                                                             <option>Shipped</option>
                                                             <option>Delivered</option>
